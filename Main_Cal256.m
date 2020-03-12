@@ -5,15 +5,27 @@ addpath('DRA')
 
 %--------------------------------------- SPM 3000d -------------------------
 load database\Cal256-SPM-3000d.mat
-
+% ------------------- PCA param -------------------------------%
+ifpca = 1; pca_type = 'dim'; pca_param = 500;
+%---------------------------------------------------------------
 t1 = clock;
 num_train = 10; num_test = 10; num_valid = 10; Exp_times = 30; k = 257;
 for j=1:Exp_times
-    disp(['LFW Database: Setting',num2str(1),' -- Experiments ',num2str(j),' Start!']); t2 = clock;
+    disp(['Cal256 Database: Setting',num2str(1),' -- Experiments ',num2str(j),' Start!']); t2 = clock;
     [TestFea,TestG,TrainFea,TrainG,ValidFea,ValidG] = RandpickTVT(fea,gnd,num_train,num_valid,num_test,j);
+    % ===================== If PCA ========================================
+    if ifpca
+        [proj] = Our_PCA([TrainFea;ValidFea],pca_type,pca_param);
+        TrainFea = TrainFea*proj; ValidFea = ValidFea*proj;
+        TestFea = TestFea*proj;
+        if isprint
+            disp(['Dimensionality after PCA with ',num2str(pca_param),...
+                ' energy preserved: ',num2str(size(proj,2))])
+        end
+    end
     %-----Learning----
-    [uu1, rr1, RMT1] = DRA_residual_matrix(TrainFea,TrainG,ValidFea,ValidG,0); 
-    [uu2, rr2, RMT2] = DRA_residual_matrix(TrainFea,TrainG,ValidFea,ValidG,1); 
+    [uu1, rr1, RMT1] = DRA_residual_matrixSM(TrainFea,TrainG,ValidFea,ValidG,0); 
+    [uu2, rr2, RMT2] = DRA_residual_matrixSM(TrainFea,TrainG,ValidFea,ValidG,1); 
     
     [P1, ~, E1DRA_T1] = DRA_Exp(uu1, rr1, 'num', k);
     [P2, ~, R1DRA_T2] = DRA_Reg(uu1, rr1, 'num', k, 1e-3);
@@ -26,7 +38,7 @@ for j=1:Exp_times
         %[i,j]
         N_up = N_low + sum(TestG==label);
         
-        [Drc, Duc, DRAtime_d(i)] = DRA_d(TrainFea,TestFea(N_low+1:N_up,:),TrainG);
+        [Drc, Duc, DRAtime_d(i)] = DRA_dSM(TrainFea,TestFea(N_low+1:N_up,:),TrainG);
         
         [NFSprediction(i), NFStime(i)] = NFS(TrainFea,TestFea(N_low+1:N_up,:),TrainG);
         [E1DRAprediction(i), E1DRAtime_p(i)] = DRA_p(Drc,Duc,TrainG,P1);
@@ -45,7 +57,7 @@ for j=1:Exp_times
     [R2DRAAccuracy(j)] = Judge(R2DRAprediction, TestLable); R2DRAT(j)=mean(DRAtime_d)+mean(R2DRAtime_p); L4T(j) = R2DRA_T4+RMT2;
 
     mins = idivide(etime(clock,t1),int32(60));
-    disp(['LFW Experiments ',num2str(j),' Finished!']);
+    disp(['Cal256 Experiments ',num2str(j),' Finished!']);
     disp(['[Current iteration time: ',num2str(etime(clock,t2)),'secs] [Total time: ',num2str(idivide(mins,int32(60))),'h ',num2str(mod(mins,60)),'m ',num2str(mod(etime(clock,t1),60)),'s]']);
     disp('=======================================================================');
 end
@@ -64,15 +76,17 @@ Cal256Result(:,1:3)=[
 
 %--------------------------------------- Deep Features 2048d -------------------------
 load database\Cal256-SEResNeXt-50-2048d.mat
-
+% ------------------- PCA param -------------------------------%
+ifpca = 1; pca_type = 'dim'; pca_param = 500;
+%---------------------------------------------------------------
 t1 = clock;
 num_train = 10; num_test = 10; num_valid = 10; Exp_times = 30; k = 257;
 for j=1:Exp_times
-    disp(['LFW Database: Setting',num2str(1),' -- Experiments ',num2str(j),' Start!']); t2 = clock;
+    disp(['Cal256 Database: Setting',num2str(1),' -- Experiments ',num2str(j),' Start!']); t2 = clock;
     [TestFea,TestG,TrainFea,TrainG,ValidFea,ValidG] = RandpickTVT(fea,gnd,num_train,num_valid,num_test,j);
     %-----Learning----
-    [uu1, rr1, RMT1] = DRA_residual_matrix(TrainFea,TrainG,ValidFea,ValidG,0); 
-    [uu2, rr2, RMT2] = DRA_residual_matrix(TrainFea,TrainG,ValidFea,ValidG,1); 
+    [uu1, rr1, RMT1] = DRA_residual_matrixSM(TrainFea,TrainG,ValidFea,ValidG,0); 
+    [uu2, rr2, RMT2] = DRA_residual_matrixSM(TrainFea,TrainG,ValidFea,ValidG,1); 
     
     [P1, ~, E1DRA_T1] = DRA_Exp(uu1, rr1, 'num', k);
     [P2, ~, R1DRA_T2] = DRA_Reg(uu1, rr1, 'num', k, 1e-3);
@@ -85,7 +99,7 @@ for j=1:Exp_times
         %[i,j]
         N_up = N_low + sum(TestG==label);
         
-        [Drc, Duc, DRAtime_d(i)] = DRA_d(TrainFea,TestFea(N_low+1:N_up,:),TrainG);
+        [Drc, Duc, DRAtime_d(i)] = DRA_dSM(TrainFea,TestFea(N_low+1:N_up,:),TrainG);
         
         [NFSprediction(i), NFStime(i)] = NFS(TrainFea,TestFea(N_low+1:N_up,:),TrainG);
         [E1DRAprediction(i), E1DRAtime_p(i)] = DRA_p(Drc,Duc,TrainG,P1);
@@ -104,7 +118,7 @@ for j=1:Exp_times
     [R2DRAAccuracy(j)] = Judge(R2DRAprediction, TestLable); R2DRAT(j)=mean(DRAtime_d)+mean(R2DRAtime_p); L4T(j) = R2DRA_T4+RMT2;
 
     mins = idivide(etime(clock,t1),int32(60));
-    disp(['LFW Experiments ',num2str(j),' Finished!']);
+    disp(['Cal256 Experiments ',num2str(j),' Finished!']);
     disp(['[Current iteration time: ',num2str(etime(clock,t2)),'secs] [Total time: ',num2str(idivide(mins,int32(60))),'h ',num2str(mod(mins,60)),'m ',num2str(mod(etime(clock,t1),60)),'s]']);
     disp('=======================================================================');
 end
