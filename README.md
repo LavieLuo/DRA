@@ -10,13 +10,13 @@ This is the `Matlab` demo code for **[Discriminative Residual Analysis for Image
 
   `./database/Cal256-SEResNeXt-50-2048d.mat`
 
-- Download the '.m' data files from Google Drive:
+- Download the '.mat' data files from Google Drive:
 
-  LFW:  **[[Gray Croped (10x10)]](https://drive.google.com/open?id=1axFsmNY5ycxqBUow9clrTkZYO5nS11FO)**  **[[Gray Croped (15x10)]](https://drive.google.com/open?id=1SUSgJp3F9vk5zxLUgUMDDQ2fK0NGDI6a)**  **[[Gray Croped (30x15)]](https://drive.google.com/open?id=1Yd3-QgdX6IHYKPVA4VlcoZnoM3EM9mfS)**  **[[Resnet-50 (2048d)]](https://drive.google.com/open?id=11EwBwXsAq_YPCv4DjANgmeec3yQncs7X)**
+  LFW:  **[[Gray Croped (10x10)]](https://drive.google.com/open?id=1axFsmNY5ycxqBUow9clrTkZYO5nS11FO)**  **[[Gray Croped (15x10)]](https://drive.google.com/open?id=1SUSgJp3F9vk5zxLUgUMDDQ2fK0NGDI6a)**  **[[Gray Croped (30x15)]](https://drive.google.com/open?id=1Yd3-QgdX6IHYKPVA4VlcoZnoM3EM9mfS)**  **[[VggFace2-Resnet-50 (2048d)]](https://drive.google.com/open?id=15r1IzvSygOpZrs74pYGIsy5UnGYGxi51)**
   
   Caltech-101:  **[[SPM (3000d)]](https://drive.google.com/open?id=1561XOrDjsPJl-DwJfMF3_OL1NZJQfKyE)**  **[[SE-ResNeXt-50 (2048d)]](https://drive.google.com/open?id=15A3jvwUNuGNnthQT6vLg2dYpDOa5W0UR)**
   
-  Caltech-256:  **[[SPM (3000d)]](https://drive.google.com/open?id=1gHj3j3A0HjKveq6dgOF_PgX6UYWKBlT_)**  **[[SE-ResNeXt-50 (2048d)]](https://drive.google.com/open?id=1561XOrDjsPJl-DwJfMF3_OL1NZJQfKyE)**
+  Caltech-256:  **[[SE-ResNeXt-50 (2048d)]](https://drive.google.com/open?id=1561XOrDjsPJl-DwJfMF3_OL1NZJQfKyE)**
   
 ## Usage
 - Run the demo 'Main_LFW.m', 'Main_Cal101.m' and 'Main_Cal256.m'
