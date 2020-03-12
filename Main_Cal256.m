@@ -6,7 +6,7 @@ addpath('DRA')
 %--------------------------------------- SPM 3000d -------------------------
 load database\Cal256-SPM-3000d.mat
 % ------------------- PCA param -------------------------------%
-ifpca = 1; pca_type = 'dim'; pca_param = 500;
+ifpca = 1; pca_type = 'dim'; pca_param = 500; isprint = 1;
 %---------------------------------------------------------------
 t1 = clock;
 num_train = 10; num_test = 10; num_valid = 10; Exp_times = 30; k = 257;
@@ -77,7 +77,7 @@ Cal256Result(:,1:3)=[
 %--------------------------------------- Deep Features 2048d -------------------------
 load database\Cal256-SEResNeXt-50-2048d.mat
 % ------------------- PCA param -------------------------------%
-ifpca = 1; pca_type = 'dim'; pca_param = 500;
+ifpca = 1; pca_type = 'dim'; pca_param = 500; isprint = 1;
 %---------------------------------------------------------------
 t1 = clock;
 num_train = 10; num_test = 10; num_valid = 10; Exp_times = 30; k = 257;
