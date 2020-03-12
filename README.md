@@ -1,4 +1,4 @@
-# Unsupervised Domain Adaptation via Discriminative Manifold Embedding and Alignment
+# Discriminative Residual Analysis for Image Set Classification With Posture and Age Variations
 
 This is the `Matlab` demo code for **[Discriminative Residual Analysis for Image Set Classification With Posture and Age Variations (DRA) (TIP 2020)](https://ieeexplore.ieee.org/document/8911369)** 
 
