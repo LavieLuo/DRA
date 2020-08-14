@@ -2,6 +2,13 @@
 
 This is the `Matlab` demo code for **[Discriminative Residual Analysis for Image Set Classification With Posture and Age Variations (DRA) (TIP 2020)](https://ieeexplore.ieee.org/document/8911369)** 
 
+## Overview
+*"DRA explores a powerful projection, which casts the residual representations into a discriminant subspace, to magnify the useful information and discriminability of the input space as much as possible."*
+
+![Flowchart](https://github.com/LavieLuo/Datasets/blob/master/DRA_flowchart.png)
+
+**Fig. Flowchart of the DRA method. The subspace learning module aims to make the data in the same class more compact and data between different classes more apart. (a) Raw data space. (b) The projection operation with unrelated group construction. (c) The final embedding space. Specifically, the Distance of Interest (DOI) is defined and employed to form the residual model, which is also taken as the regression error in raw data space.**
+
 ## Requirements
 - Matlab 2018+
 
