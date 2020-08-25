@@ -1,6 +1,7 @@
 # Discriminative Residual Analysis for Image Set Classification With Posture and Age Variations
 
-This is the `Matlab` demo code for **[Discriminative Residual Analysis for Image Set Classification With Posture and Age Variations (DRA) (TIP 2020)](https://ieeexplore.ieee.org/document/8911369)** 
+This is the `Matlab` demo code for **Discriminative Residual Analysis for Image Set Classification With Posture and Age Variations (DRA) (TIP 2020)** **[[IEEE]](https://ieeexplore.ieee.org/document/8911369) [[arXiv]](https://arxiv.org/abs/2008.09994)**
+
 
 ## Overview
 *"DRA explores a powerful projection, which casts the residual representations into a discriminant subspace, to magnify the useful information and discriminability of the input space as much as possible."*
