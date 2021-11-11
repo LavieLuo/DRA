@@ -24,7 +24,7 @@ This is the `Matlab` demo code for **Discriminative Residual Analysis for Image 
   
   Caltech-101:  **[[SPM (3000d)]](https://drive.google.com/open?id=1561XOrDjsPJl-DwJfMF3_OL1NZJQfKyE)**  **[[SE-ResNeXt-50 (2048d)]](https://drive.google.com/open?id=15A3jvwUNuGNnthQT6vLg2dYpDOa5W0UR)**
   
-  Caltech-256:  **[[SE-ResNeXt-50 (2048d)]](https://drive.google.com/open?id=1561XOrDjsPJl-DwJfMF3_OL1NZJQfKyE)**
+  Caltech-256:  **[[SE-ResNeXt-50 (2048d)]](https://drive.google.com/file/d/1WR23GKsrwxvZ_AMWz83HxI8xZAqxMryn/view?usp=sharing)**
   
 ## Usage
 - Run the demo 'Main_LFW.m', 'Main_Cal101.m' and 'Main_Cal256.m'
